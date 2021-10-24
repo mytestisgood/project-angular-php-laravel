@@ -1,0 +1,40 @@
+<section>
+  
+  <div class="d-flex justify-content-between">
+      <input type="text" class="form-control" placeholder="Search person's details" [(ngModel)]="search_query"
+          (onKeyUp)="search()">
+      <a routerLink="/classes-add" class="btn btn-success">add</a>
+  </div>
+
+  <br>
+
+  <table class="table ">
+      <tr>
+          <th>id</th>
+          <th>code</th>
+          <th>name</th>
+          <th>maximum_students</th>
+          <th>status</th>
+          <th>description</th>
+          <th>created_at</th>
+          <th>updated_at</th>
+
+          <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let class of search()">
+          <td>{{ class.id }}</td>
+          <td>{{ class.name }}</td>
+          <td>{{ class.maximum_students}}</td>
+          <td>{{ class.status }}</td>
+          <td>{{ class.description }}</td>
+          <td>{{ class.created_at }}</td>
+          <td>{{ class.updated_at }}</td>
+          <td>
+
+              <a href="#" [routerLink]="['/classes-edit', class.id]" class="btn btn-primary ">Edit</a>
+              <button type="button" (click)="deleteClass(class.id)" class="btn btn-danger ">Delete</button>
+
+          </td>
+      </tr>
+  </table>
+</section>
